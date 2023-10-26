@@ -14,8 +14,6 @@ class UserController extends Controller
         return User::all();
     }
 
-    
-
     /**
      * Display the specified resource.
      */
