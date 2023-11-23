@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarouselItemsController;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\LetterController;
 use App\Http\Controllers\Api\ProfileController;
@@ -18,6 +19,15 @@ use App\Http\Controllers\Api\ProfileController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+//Message API's
+Route::controller(MessageController::class)->group(function () {
+    Route::get('/message',                 'index');
+    Route::get('/message/{id}',            'show');
+    Route::post('/message',                'store');
+    Route::put('/message/{id}',            'update');
+    Route::delete('/message/{id}',         'destroy');
+});
 
 //Public API's
 Route::post('/login', [AuthController::class, 'login'])->name('user.login');
