@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarouselItemsController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\LetterController;
-
-
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +28,7 @@ Route::post('/user',  [UserController::class, 'store'])->name('user.store');
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout',                  [AuthController::class, 'logout']);
 
+    //Admin API's
     Route::controller(CarouselItemsController::class)->group(function () {
         Route::get('/carousel',             'index');
         Route::get('/carousel/{id}',        'show');
@@ -36,7 +36,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/carousel/{id}',        'update');
         Route::delete('/carousel/{id}',     'destroy');
     });
-
     Route::controller(UserController::class)->group(function () {
         Route::get('/user',                 'index');
         Route::get('/user/{id}',            'show');
@@ -46,7 +45,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/user/image/{id}',      'image')->name('user.image');
         Route::delete('/user/{id}',         'destroy');
     });
+    //User Specific API's
+    Route::get('/profile/show',          [ProfileController::class, 'show']);
+    Route::put('/profile/image',          [ProfileController::class, 'image'])->name('profile.image');
 });
+
+
 
 
 
