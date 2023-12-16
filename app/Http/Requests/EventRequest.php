@@ -4,11 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CarouselItemsRequest extends FormRequest
+class EventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     */ 
+     */
     public function authorize(): bool
     {
         return true;
@@ -21,13 +21,13 @@ class CarouselItemsRequest extends FormRequest
      */
     public function rules(): array
     {
-    
         return [
-            'carousel_name' => 'string|max:255',
-            'image_path'    => 'required|max:255',
-            'description'   => 'string|nullable|max:255',
-            'user_id'       => 'required|integer',
+            'event_name'    => 'string|max:255',
+            'event_type'    => 'string|max:255',
+            'start_date'    => 'required|string|date|max:255',
+            'end_date'      => 'required|string|date|max:255',
+            'location'      => 'required|string|max:255',
+            'organizer_id'  => 'required|exists:App\Models\Organizer,organizer_id|integer'
         ];
-    
     }
 }

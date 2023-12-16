@@ -25,12 +25,15 @@ class UserRequest extends FormRequest
             return [
                 'email'     => 'required|string|email|max:255',
                 'password'  => 'required|min:8',
+                'role'      => 'required',
             ];
         } else if (request()->routeIs('user.store')) {
             return [
-                'name'     => 'required|string|max:255',
-                'email'    => 'required|string|email|unique:App\Models\User,email|max:255',
-                'password' => 'required|min:8',
+                'firstname'    => 'required|string|max:255',
+                'lastname'     => 'required|string|max:255',
+                'email'        => 'required|string|email|unique:App\Models\User,email|max:255',
+                'password'     => 'required|min:8|confirmed',
+                'role'         => 'required',
             ];
         } else if (request()->routeIs('user.update')) {
             return [

@@ -31,6 +31,18 @@ class LetterController extends Controller
          return $letter;
     }
 
+
+    public function update(LetterRequest $request, string $id)
+    {
+        $validated = $request->validated();
+        
+        $letter = Letter::findOrFail($id);
+
+        $letter->update($validated);
+
+        return $letter;
+    }
+
     /**
      * Display the specified resource.
      */

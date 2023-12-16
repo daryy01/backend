@@ -112,4 +112,10 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function selection()
+    {
+        return User::select('id', 'name')
+                    ->get();
+    }
 }
