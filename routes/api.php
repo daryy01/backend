@@ -2,16 +2,20 @@
 
 use App\Http\Controllers\API\ArtistController;
 use App\Http\Controllers\Api\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarouselItemsController;
+use App\Http\Controllers\API\ClassesController;
+use App\Http\Controllers\API\ClassRegistrationController;
 use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\API\EventAttendanceController;
+use App\Http\Controllers\API\ArtistsExhibitionController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\LetterController;
 use App\Http\Controllers\API\OrganizerController;
+use App\Http\Controllers\API\InstructorController;
 use App\Http\Controllers\Api\ProfileController;
-use App\Models\Organizer;
+use App\Models\EventAttendance;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +85,22 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::controller(OrganizerController::class)->group(function () {
         Route::post('/organizer', 'store');
     });
+    Route::controller(InstructorController::class)->group(function () {
+        Route::post('/instructor', 'store');
+    });
+    Route::controller(ClassesController::class)->group(function () {
+        Route::post('/classes', 'store');
+    });
+    Route::controller(ClassRegistrationController::class)->group(function () {
+        Route::post('/classreg', 'store');
+    });
+    Route::controller(EventAttendanceController::class)->group(function () {
+        Route::post('/eventatt', 'store');
+    });
+    Route::controller(ArtistsExhibitionController::class)->group(function () {
+        Route::post('/eventexhi', 'store');
+    });
+    
 
 
     //User Specific API's
