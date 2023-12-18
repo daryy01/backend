@@ -14,7 +14,7 @@ class OrganizerController extends Controller
      */
     public function index()
     {
-        //
+        return Organizer::all();
     }
 
     /**

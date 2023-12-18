@@ -28,7 +28,8 @@ class Instructor extends Model
      * @var array
      */
     protected $fillable = [
-        'instructor_name',
+        'instructor_firstname',
+        'instructor_lastname',
         'instructor_contact',
         'instructor_bio',
     ];

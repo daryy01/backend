@@ -22,9 +22,10 @@ class InstructorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'instructor_name'     => 'required|string|max:255',
-            'instructor_contact'  => 'required|max:11',
-            'instructor_bio'      => 'string|max:255',
+            'instructor_firstname'      => 'required|string|max:255',
+            'instructor_lastname'       => 'required|string|max:255',
+            'instructor_contact'        => 'required|max:11',
+            'instructor_bio'            => 'string|max:255',
         ];
     }
 }

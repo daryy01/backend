@@ -77,19 +77,26 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::delete('/user/{id}',         'destroy');
     });
     Route::controller(ArtistController::class)->group(function () {
-        Route::post('/artist', 'store');
+        Route::get('/artist',       'index');
+        Route::post('/artist',      'store');
+        Route::get('/artist/{id}',  'show');
     });
     Route::controller(EventController::class)->group(function () {
-        Route::post('/event', 'store');
+        Route::get('/event',        'index');
+        Route::post('/event',       'store');
+        Route::get('/event/{id}',   'show');
     });
     Route::controller(OrganizerController::class)->group(function () {
-        Route::post('/organizer', 'store');
+        Route::get('/organizer',    'index');
+        Route::post('/organizer',   'store');
     });
     Route::controller(InstructorController::class)->group(function () {
-        Route::post('/instructor', 'store');
+        Route::get('/instructor',    'index');
+        Route::post('/instructor',   'store');
     });
     Route::controller(ClassesController::class)->group(function () {
-        Route::post('/classes', 'store');
+        Route::get('/classes',      'index');
+        Route::post('/classes',     'store');
     });
     Route::controller(ClassRegistrationController::class)->group(function () {
         Route::post('/classreg', 'store');

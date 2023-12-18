@@ -22,9 +22,10 @@ class OrganizerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'organizer_name'     => 'required|string|max:255',
-            'organizer_contact'  => 'required|max:11',
-            'organizer_bio'      => 'string|max:255',
+            'organizer_firstname'     => 'required|string|max:255',
+            'organizer_lastname'      => 'required|string|max:255',
+            'organizer_contact'       => 'required|max:11',
+            'organizer_bio'           => 'string|max:255',
         ];
     }
 }

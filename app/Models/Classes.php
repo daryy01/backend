@@ -30,6 +30,7 @@ class Classes extends Model
     protected $fillable = [
         'class_name',
         'instructor_id',
+        'class_date',
         //'start_date',
         //'end_date'
     ];

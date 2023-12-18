@@ -28,7 +28,8 @@ class Organizer extends Model
      * @var array
      */
     protected $fillable = [
-        'organizer_name',
+        'organizer_firstname',
+        'organizer_lastname',
         'organizer_contact',
         'organizer_bio',
     ];
