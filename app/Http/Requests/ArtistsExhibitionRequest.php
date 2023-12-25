@@ -25,6 +25,7 @@ class ArtistsExhibitionRequest extends FormRequest
             'artist_id'              => 'required|exists:App\Models\Artist,artist_id|integer',
             'exhibition_name'        => 'required|string|max:255',
             'exhibition_date'        => 'required|string|date|max:255',
+            'image'                  => 'required|image|mimes:jpg,bmp,png|max:5120',
         ];
     }
 }

@@ -14,7 +14,7 @@ class ClassRegistrationController extends Controller
      */
     public function index()
     {
-        //
+        return ClassRegistration::all();
     }
 
     /**

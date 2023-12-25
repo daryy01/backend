@@ -31,6 +31,7 @@ class ArtistsExhibition extends Model
         'artist_id',
         'exhibition_name',
         'exhibition_date',
+        'image'
         //'start_date',
         //'end_date'
     ];

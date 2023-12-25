@@ -99,13 +99,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/classes',     'store');
     });
     Route::controller(ClassRegistrationController::class)->group(function () {
-        Route::post('/classreg', 'store');
+        Route::get('/classreg',     'index');
+        Route::post('/classreg',    'store');
     });
     Route::controller(EventAttendanceController::class)->group(function () {
-        Route::post('/eventatt', 'store');
+        Route::post('/eventatt',    'store');
     });
     Route::controller(ArtistsExhibitionController::class)->group(function () {
-        Route::post('/eventexhi', 'store');
+        Route::get('/eventexhi',    'index');
+        Route::put('/eventexhi',    'store');
     });
     
 

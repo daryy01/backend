@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ArtistsExhibitionRequest;
 use App\Models\ArtistsExhibition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArtistsExhibitionController extends Controller
 {
@@ -14,7 +15,7 @@ class ArtistsExhibitionController extends Controller
      */
     public function index()
     {
-        //
+        return ArtistsExhibition::all();
     }
 
     /**
@@ -31,6 +32,8 @@ class ArtistsExhibitionController extends Controller
     public function store(ArtistsExhibitionRequest $request)
     {
         $validated = $request->validated();
+
+        $validated['image'] = $request->file('image')->storePublicly('exhibition', 'public');
 
         $event = ArtistsExhibition::create($validated);
 
@@ -68,4 +71,20 @@ class ArtistsExhibitionController extends Controller
     {
         //
     }
+
+    public function image(ArtistsExhibitionRequest $request)
+    {
+        $event = ArtistsExhibition::findOrFail($request->artist()->artist_id);
+
+        if (!is_null($event->image)) {
+            Storage::disk('public')->delete($event->image);
+        }
+
+        $event->image = $request->file('image')->storePublicly('images', 'public');
+
+        $event->save();
+
+        return $event;
+    }
+
 }
