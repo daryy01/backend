@@ -56,9 +56,15 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EventRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        
+        $event = Event::findOrFail($id);
+
+        $event->update($validated);
+
+        return $event;
     }
 
     /**
@@ -66,6 +72,11 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+ 
+        $event->delete();
+
+
+        return $event;
     }
 }

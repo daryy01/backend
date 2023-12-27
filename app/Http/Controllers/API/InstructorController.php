@@ -56,9 +56,15 @@ class InstructorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(InstructorRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        
+        $instructor = Instructor::findOrFail($id);
+
+        $instructor->update($validated);
+
+        return $instructor;
     }
 
     /**
@@ -66,6 +72,11 @@ class InstructorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $instrucor = Instructor::findOrFail($id);
+ 
+        $instrucor->delete();
+
+
+        return $instrucor;
     }
 }

@@ -34,6 +34,7 @@ class Event extends Model
         'start_date',
         'end_date',
         'location',
+        'event_description',
         'organizer_id',
     ];
 }

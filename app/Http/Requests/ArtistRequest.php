@@ -22,10 +22,8 @@ class ArtistRequest extends FormRequest
     public function rules(): array
     {
             return [
-                'artist_firstname'    => 'required|string|max:255',
-                'artist_lastname'     => 'required|string|max:255',
-                'artname'             => 'required|string|max:255',
                 'artist_number'       => 'required|max:11',
+                'id'                  => 'required|string|exists:App\Models\User,id|max:255',
             ];
     }
 }

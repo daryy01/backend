@@ -57,9 +57,15 @@ class ArtistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ArtistRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        
+        $artist = Artist::findOrFail($id);
+
+        $artist->update($validated);
+
+        return $artist;
     }
 
     /**
@@ -67,6 +73,11 @@ class ArtistController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $artist = Artist::findOrFail($id);
+ 
+        $artist->delete();
+
+
+        return $artist;
     }
 }

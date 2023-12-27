@@ -22,10 +22,10 @@ class ClassesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'class_name'    => 'string|max:255',
-            'class_date'    => 'required|string|date|max:255',
-            //'end_date'      => 'required|string|date|max:255',
-            'instructor_id'  => 'required|exists:App\Models\Instructor,instructor_id|integer'
+            'class_name'            => 'string|max:255',
+            'class_date'            => 'required|string|date|max:255',
+            'instructor_id'         => 'exists:App\Models\Instructor,instructor_id|integer',
+            'class_description'     => 'string|max:255',
         ];
     }
 }

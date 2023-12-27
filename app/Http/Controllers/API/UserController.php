@@ -116,6 +116,6 @@ class UserController extends Controller
     public function selection()
     {
         return User::select('id', 'name')
-                    ->get();
+                    ->get();    
     }
 }

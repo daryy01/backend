@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ArtistsExhibitionRequest;
-use App\Models\ArtistsExhibition;
+use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class ArtistsExhibitionController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return ArtistsExhibition::all();
+        //
     }
 
     /**
@@ -29,15 +28,13 @@ class ArtistsExhibitionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ArtistsExhibitionRequest $request)
+    public function store(AdminRequest $request)
     {
         $validated = $request->validated();
 
-        $validated['image'] = $request->file('image')->storePublicly('exhibition', 'public');
+        $admin = Admin::create($validated);
 
-        $event = ArtistsExhibition::create($validated);
-
-        return $event;
+        return $admin;
     }
 
     /**
@@ -69,7 +66,6 @@ class ArtistsExhibitionController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        //
     }
-
 }

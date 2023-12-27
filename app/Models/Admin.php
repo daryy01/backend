@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classes extends Model
+class Admin extends Model
 {
     use HasFactory;
-     /**
+    use HasFactory;
+    
+    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'classes';
+    protected $table = 'admin';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'class_id';
+    protected $primaryKey = 'admin_id';
 
     /**
      * The attributes that are mass assignable.
@@ -28,11 +30,10 @@ class Classes extends Model
      * @var array
      */
     protected $fillable = [
-        'class_name',
-        'instructor_id',
-        'class_date',
-        'class_description'
-        //'start_date',
-        //'end_date'
+        //'artist_firstname',
+        //'artist_lastname',
+        //'artname',
+        'admin_contact',
+        'id',
     ];
 }

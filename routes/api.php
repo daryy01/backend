@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\LetterController;
 use App\Http\Controllers\API\OrganizerController;
 use App\Http\Controllers\API\InstructorController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\AdminController;
 use App\Models\EventAttendance;
 
 /*
@@ -51,6 +52,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('user.login');
 Route::post('/user',  [UserController::class, 'store'])->name('user.store');
 
 
+
 //User Selection
 Route::get('/user/selection',[UserController::class, 'selection']);
 
@@ -77,38 +79,60 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::delete('/user/{id}',         'destroy');
     });
     Route::controller(ArtistController::class)->group(function () {
-        Route::get('/artist',       'index');
-        Route::post('/artist',      'store');
-        Route::get('/artist/{id}',  'show');
+        Route::get('/artist',           'index');
+        Route::post('/artist',          'store');
+        Route::get('/artist/{id}',      'show');
+        Route::put('/artist/{id}',      'update');
+        Route::delete('/artist/{id}',     'destroy');
+    });
+   
+    Route::controller(ClassesController::class)->group(function () {
+        Route::get('/classes',          'index');
+        Route::post('/classes',         'store');
+        Route::put('/classes/{id}',     'update');
+        Route::delete('/classes/{id}',     'destroy');
     });
     Route::controller(EventController::class)->group(function () {
-        Route::get('/event',        'index');
-        Route::post('/event',       'store');
-        Route::get('/event/{id}',   'show');
+        Route::get('/event',            'index');
+        Route::post('/event',           'store');
+        Route::get('/event/{id}',       'show');
+        Route::put('/event/{id}',       'update');
+        Route::delete('/event/{id}',    'destroy');
+    });
+    
+    
+    Route::controller(InstructorController::class)->group(function () {
+        Route::get('/instructor',        'index');
+        Route::post('/instructor',       'store');
+        Route::put('/instructor/{id}',   'update');
+        Route::delete('/instructor/{id}',     'destroy');
     });
     Route::controller(OrganizerController::class)->group(function () {
-        Route::get('/organizer',    'index');
-        Route::post('/organizer',   'store');
+        Route::get('/organizer',         'index');
+        Route::post('/organizer',        'store');
+        Route::put('/organizer/{id}',   'update');
+        Route::delete('/organizer/{id}',     'destroy');
     });
-    Route::controller(InstructorController::class)->group(function () {
-        Route::get('/instructor',    'index');
-        Route::post('/instructor',   'store');
-    });
-    Route::controller(ClassesController::class)->group(function () {
-        Route::get('/classes',      'index');
-        Route::post('/classes',     'store');
+    
+    Route::controller(ArtistsExhibitionController::class)->group(function () {
+        Route::get('/eventexhi',    'index');
+        Route::put('/eventexhi',    'store');
     });
     Route::controller(ClassRegistrationController::class)->group(function () {
         Route::get('/classreg',     'index');
         Route::post('/classreg',    'store');
     });
-    Route::controller(EventAttendanceController::class)->group(function () {
-        Route::post('/eventatt',    'store');
+    
+    
+   //Route::controller(EventAttendanceController::class)->group(function () {
+   //    Route::post('/eventatt',    'store');
+   //});
+    
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::post('/admin',    'store');
     });
-    Route::controller(ArtistsExhibitionController::class)->group(function () {
-        Route::get('/eventexhi',    'index');
-        Route::put('/eventexhi',    'store');
-    });
+   
     
 
 

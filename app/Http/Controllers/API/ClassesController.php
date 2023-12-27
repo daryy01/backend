@@ -56,9 +56,15 @@ class ClassesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClassesRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+        
+        $classes = Classes::findOrFail($id);
+
+        $classes->update($validated);
+
+        return $classes;
     }
 
     /**
@@ -66,6 +72,11 @@ class ClassesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $classes = Classes::findOrFail($id);
+ 
+        $classes->delete();
+
+
+        return $classes;
     }
 }
