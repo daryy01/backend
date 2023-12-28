@@ -131,6 +131,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::controller(AdminController::class)->group(function () {
         Route::post('/admin',    'store');
+        Route::get('/admin',       'index');
     });
    
     

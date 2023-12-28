@@ -22,7 +22,7 @@ class ArtistRequest extends FormRequest
     public function rules(): array
     {
             return [
-                'artist_number'       => 'required|max:11',
+                'artist_number'       => 'required|numeric|digits:11',
                 'id'                  => 'required|string|exists:App\Models\User,id|max:255',
             ];
     }

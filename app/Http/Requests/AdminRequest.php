@@ -22,7 +22,7 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'admin_contact'       => 'required|max:11',
+            'admin_contact'       => 'required|numeric|digits:11',
             'id'                  => 'required|string|exists:App\Models\User,id|max:255',
         ];
     }
